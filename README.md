@@ -2,6 +2,7 @@
 
 ## Installing Django
 `python -m pip install -e django`
+
 `python -m django --version`
 
 ### Starting new project and starting app in the project
@@ -17,6 +18,7 @@ Project folder should contain *manage.py*.
 
 > Apply model changes.
 `python manage.py startmigrating appname`
+
 `python manage.py migrate`
 
 > Start app server

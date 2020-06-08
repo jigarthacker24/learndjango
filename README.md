@@ -21,7 +21,7 @@ Project folder should contain *manage.py*.
 
 > Apply model changes.
 
-`python manage.py startmigrating appname`
+`python manage.py makemigrations appname`
 
 `python manage.py migrate`
 

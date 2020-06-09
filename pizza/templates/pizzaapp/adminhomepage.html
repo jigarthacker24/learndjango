@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand">Welcome Admin</a>
+    <!-- <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> -->
+    <a class="btn btn-danger"  href="/adminlogout/" >logout</a>
+</nav>
+
+
+<form action="/addpizza/" method="post">
+    {% csrf_token %}
+    <div class="container" style="display: block;margin: auto;width:510px;">
+        <input type="text" placeholder="name" class="form-control" name="pizza" style="display: inline;margin: auto;width: 200px;">
+        <input type="text" placeholder="price" class="form-control" name="price" style="display: inline;margin: auto;width: 200px;">
+        <input type="submit" value="Add" class="btn btn-success" style="display: inline;margin: auto;">
+    </div>
+
+</form>    
+
+<div style="display: block;margin: auto;width: 50%;margin-top:80px;">
+<table style="width: 50%;">
+    <tr>
+        <th>Pizza Name</th>
+        <th>Pizza Price</th>
+        <th>Delete</th>
+    </tr>
+    {% for pz in pizza %}
+    <tr>
+        <td>{{pz.name}}</td>
+        <td>{{pz.price}}</td>
+        <td><a class="btn btn-danger" href="/deletepizza/{{pz.id}}/">delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}

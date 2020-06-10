@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand">Welcome, {{name}}</a>
+    <a href="/userorders/" class="nav-item" style="color:black;text-decoration: none;">my orders</a>
+    <!-- <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> -->
+    <a class="btn btn-danger"  href="/userlogout/" >logout</a>
+</nav>
+
+{% for message in messages %}
+<p style="text-align: center;color: green;">{{message}}</p>
+{% endfor %}
+
+<form action="/placeorder/" method="post">
+    {% csrf_token %}
+<div class="container" style="width: 600px;margin: auto;">
+<table style="width: 100%;">
+    <tr>
+        <th>pizza</th>
+        <th>price</th>
+        <th>quantity</th>
+    </tr>
+    {% for pizza in pizzas %}
+    <tr>
+        <td>{{pizza.name}}</td>
+        <td>{{pizza.price}}</td>
+        <td><input style="width: 80px;" type="number" min="0" value="0" name="{{pizza.id}}"></td>
+    </tr>
+    {% endfor %}
+</table>
+<input type="text" style="width: 400px;margin-top: 50px;" placeholder="address" name="address">
+<input type="submit" style="float: right;margin-top: 50px;" class="btn btn-outline-success" value="place order">
+</div>
+</form>
+
+
+
+{% endblock %}

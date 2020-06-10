@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand">Welcome</a>
+    <!-- <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> -->
+    <a class="btn btn-warning"  href="/userloginpage" >login</a>
+</nav>
+{% for message in messages %}
+<p style="text-align: center;">{{message}}</p>
+{% endfor %}
+<div class="container-fluid" style="position: relative;height:600px;background-size: cover;background-image: url({% static "img/1.jpg" %});">
+    <div style="position: absolute;top: 40px;right: 20px;height: 300px;width: 350px;background-color: orange;padding: 30px;" class="container">
+        <h3 style="text-align: center;color: white;">Singup!</h3>
+        <form action="/usersignup/" method="post">
+            {% csrf_token %}
+            <input type="text" class="form-control" placeholder="username" name="username" style="margin-bottom: 10px;">
+            <input type="password" class="form-control" placeholder="password" name="password" style="margin-bottom: 10px;">
+            <input type="text" class="form-control" placeholder="phoneno" name="phone" style="margin-bottom: 10px;">
+            <input type="submit" value="singup" class="btn btn-success" style="display: block; margin:auto;margin-top: 20px;">
+        </form>
+    </div>
+</div>
+
+
+{% endblock%}
